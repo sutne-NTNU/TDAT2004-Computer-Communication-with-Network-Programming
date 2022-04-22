@@ -1,0 +1,10 @@
+
+Optimistisk låsing betyr at det finnes en variabel som brukes som en sjekk for om informasjon har blitt endret.
+Dette kalles optimistisk låsing ettersom det teknisk sett ikke er en lås, men en sjekk som forhindrer at feil
+oppstår hvis to eller flere prøver å endre samme entitet samtidig.
+
+I dette eksempelet er det EntityManager som håndterer denne låsen, hvor det blir lagt til et ekstra felt i databasen,
+Entitymanager henter dette feltete ut når den trengere informasjonen, og etter den har gjort de endringer som skal
+gjøres leser EntityManager denne verdien på nytt, hvis den er lik, har ikke entieteten blitt endret og den kan utføre
+sin endring, hvis den er ulik har noen andre endret informasjon, som betyr at denne sin infomrasjon er utdatert og
+den kaster en exception.

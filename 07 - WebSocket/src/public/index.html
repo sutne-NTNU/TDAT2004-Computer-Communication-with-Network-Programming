@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang = "eng">
+	<head>
+		<meta charset = "UTF-8"/>
+		<title>Øving 7 - WebSocket</title>
+	</head>
+	<link rel = "stylesheet"
+	      type = "text/css"
+	      href = "style.css">
+	<body>
+	<div id = "sketch">
+		<canvas id = "paint"></canvas>
+	</div>
+	<div id = "settings"> Colour
+		<button onclick = "getColor('black');">Black</button>
+		<button onclick = "getColor('blue');">Blue</button>
+		<button onclick = "getColor('red');">Red</button>
+		<button onclick = "getColor('green');">Green</button>
+		<button onclick = "getColor('white');">Eraser</button>
+	</div>
+	<div id = "settings"> Brush size
+		<input type = "range"
+		       min = "1"
+		       max = "45"
+		       value = "1"
+		       id = "slider">
+	</div>
+	<script src = "script.js"></script>
+	</body>
+</html>

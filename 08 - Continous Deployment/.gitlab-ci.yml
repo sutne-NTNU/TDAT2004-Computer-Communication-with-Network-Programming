@@ -1,0 +1,41 @@
+image: node:latest
+
+stages:
+  - build  # Jobs placed in build-stage will run first
+  - test   # Jobs placed in tets-stage will run after build-jobs
+  - deploy # Jobs placed in build-stage will run last after test-jobs
+
+install:
+  stage: build
+  script:
+    - npm install
+  # Keep node_modules-folder for the following stages:
+  artifacts:
+    paths:
+      - node_modules
+
+test:
+  stage: test # Job test will run in parallel with the job flow
+  script:
+    - npm test
+
+flow:
+  stage: test # Job flow will run in parallel with the job test
+  script:
+    - npm install --global flow-bin
+    - flow check
+
+deploy:
+  stage: deploy
+  script:
+    - mkdir ~/.ssh
+    - echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+    - touch ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa # Required permission by ssh
+    - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+    - apt-get update
+    - apt-get install --assume-yes rsync
+    - rsync --archive --delete --exclude='.git' --exclude='node_modules' . app@10.52.232.243:app
+    - ssh app@10.52.232.243 systemctl --user restart app
+  only:
+    - master

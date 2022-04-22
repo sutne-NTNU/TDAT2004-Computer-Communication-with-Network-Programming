@@ -1,0 +1,37 @@
+.App {
+  text-align: center;
+  white-space: pre;
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #1a1a1a;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+/*   justify-content: center; */
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.CodeMirror {
+font-family: Arial, monospace;
+font-size: 14px;
+text-align: left;
+border-radius: 4px;
+}
+.cm-s-panda-syntax .cm-string
+{
+color: #40C4FF !important;
+font-weight: bold;
+}
+.CodeMirror-selected {
+background:#3f5c6e !important;
+}

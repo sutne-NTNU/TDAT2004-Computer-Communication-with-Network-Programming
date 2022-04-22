@@ -1,0 +1,30 @@
+{
+	"name": "service",
+	"version": "1.0.0",
+	"scripts": {
+		"start": "nodemon --exec NODE_ENV=production babel-node src/server.js",
+		"test": "jest"
+	},
+	"jest": {
+		"verbose": true,
+		"collectCoverage": true,
+		"coverageReporters": [
+			"json",
+			"html"
+		]
+	},
+	"dependencies": {
+		"express": "^4.17.1"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.6.4",
+		"@babel/node": "^7.6.3",
+		"@babel/plugin-proposal-class-properties": "^7.5.5",
+		"@babel/preset-env": "^7.6.3",
+		"babel-jest": "^24.9.0",
+		"cors": "^2.8.5",
+		"jest": "^24.9.0",
+		"nodemon": "^1.19.4",
+		"reload": "^3.0.2"
+	}
+}
